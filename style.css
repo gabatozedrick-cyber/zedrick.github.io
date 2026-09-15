@@ -1,0 +1,228 @@
+:root{
+    --soil-dark:   #16202c;
+    --moss:        #2f5480;
+    --moss-deep:   #1f3a57;
+    --paper:       #eef1f4;
+    --paper-dim:   #e2e7ec;
+    --gold:        #c68a2e;
+    --clay:        #9c5334;
+    --line:        #c7d3dc;
+    --max: 720px;
+  }
+
+  *{ box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--soil-dark);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:16px;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  ::selection{ background:var(--gold); color:var(--paper); }
+
+  a{ color:var(--moss); text-decoration-thickness:1.5px; text-underline-offset:3px; }
+  a:hover{ color:var(--clay); }
+
+  h1,h2,h3{
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight:600;
+    margin:0;
+    color:var(--soil-dark);
+  }
+
+  .wrap{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---------- topo texture backdrop ---------- */
+  .topo{
+    position:fixed; inset:0; z-index:-1;
+    opacity:.5;
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(54,74,48,0.05) 40px),
+      var(--paper);
+  }
+
+  /* ---------- nav ---------- */
+  nav{
+    position:sticky; top:0; z-index:10;
+    background:rgba(238,240,226,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:14px; padding-bottom:14px;
+  }
+  .brand{ display:flex; align-items:center; }
+  .brand img{ height:38px; width:auto; display:block; }
+  nav ul{
+    list-style:none; display:flex; gap:22px; margin:0; padding:0;
+    font-size:.85rem;
+  }
+  nav a{ color:var(--soil-dark); text-decoration:none; border-bottom:2px solid transparent; padding-bottom:2px; }
+  nav a:hover{ border-bottom-color:var(--gold); color:var(--soil-dark); }
+
+  /* ---------- hero ---------- */
+  header.hero{
+    padding:76px 0 60px;
+    position:relative;
+  }
+  .locus{
+    font-size:.78rem;
+    color:var(--moss);
+    display:flex; align-items:center; gap:8px;
+    margin-bottom:18px;
+  }
+  .locus svg{ width:14px; height:14px; }
+
+  .hero h1{
+    font-size:clamp(2.4rem, 6vw, 3.6rem);
+    line-height:1.05;
+    letter-spacing:-0.01em;
+  }
+  .hero h1 em{
+    font-style:italic;
+    font-weight:400;
+    color:var(--moss);
+  }
+
+  .type-line{
+    margin-top:16px;
+    font-size:1rem;
+    color:var(--moss-deep);
+    border-left:3px solid var(--gold);
+    padding-left:14px;
+    max-width:52ch;
+  }
+
+  /* ---------- section shell ---------- */
+  section{ padding:52px 0; border-top:1px solid var(--line); }
+  .eyebrow-line{
+    display:flex; align-items:center; gap:14px;
+    margin-bottom:28px;
+  }
+  .eyebrow-line .num{
+    font-size:.75rem; color:var(--gold); font-weight:600;
+  }
+  .eyebrow-line h2{ font-size:1.5rem; }
+
+  /* ---------- about ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns: 168px 1fr;
+    gap:32px;
+    align-items:start;
+  }
+  .portrait{
+    width:168px; height:168px;
+    border-radius:6px;
+    overflow:hidden;
+    border:1px solid var(--line);
+    background:var(--paper-dim);
+    position:relative;
+  }
+  .portrait img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .portrait::after{
+    content:"";
+    position:absolute; inset:0;
+    box-shadow: inset 0 0 0 1px rgba(28,36,24,0.08);
+    border-radius:6px;
+  }
+
+  .stat-list{
+    list-style:none; margin:20px 0 0; padding:0;
+    display:grid; gap:8px;
+    font-size:.86rem;
+  }
+  .stat-list li{
+    display:grid; grid-template-columns:110px 1fr;
+    gap:10px;
+    color:var(--moss-deep);
+  }
+  .stat-list .k{ color:var(--gold); font-weight:600; }
+
+  p{ margin:0 0 14px; max-width:64ch; }
+
+  /* ---------- education timeline ---------- */
+  .timeline{ position:relative; padding-left:26px; }
+  .timeline::before{
+    content:""; position:absolute; left:6px; top:6px; bottom:6px;
+    width:1px; background:var(--line);
+  }
+  .t-item{ position:relative; margin-bottom:26px; }
+  .t-item:last-child{ margin-bottom:0; }
+  .t-item::before{
+    content:""; position:absolute; left:-26px; top:5px;
+    width:9px; height:9px; border-radius:50%;
+    background:var(--paper); border:2px solid var(--moss);
+  }
+  .t-item .yr{ font-size:.75rem; color:var(--gold); font-weight:600; }
+  .t-item h3{ font-size:1.05rem; margin-top:2px; }
+  .t-item .org{ font-size:.85rem; color:var(--moss-deep); margin-top:2px; }
+
+  /* ---------- skills as simple rows ---------- */
+  .skills{ display:grid; gap:12px; }
+  .skill-row{
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:.9rem;
+    padding:12px 16px;
+    background:var(--paper-dim);
+    border:1px solid var(--line);
+    border-radius:6px;
+    color:var(--soil-dark);
+  }
+  .skill-row .tool{ color:var(--moss); font-weight:600; font-size:.85rem; }
+
+  /* ---------- interests ---------- */
+  .interest-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(140px,1fr));
+    gap:14px;
+  }
+  .interest{
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:16px;
+    background:var(--paper-dim);
+    transition:transform .18s ease, border-color .18s ease;
+  }
+  .interest:hover{ transform:translateY(-3px); border-color:var(--gold); }
+  .interest svg{ width:22px; height:22px; margin-bottom:10px; color:var(--moss); }
+  .interest h3{ font-size:.95rem; font-weight:600; }
+  .interest p{ font-size:.8rem; margin:6px 0 0; color:var(--moss-deep); }
+
+  .contact-alt{
+    display:flex; gap:22px; flex-wrap:wrap;
+    font-size:.85rem;
+    margin-top:6px;
+  }
+  .contact-alt a{ display:inline-flex; align-items:center; gap:6px; }
+  .contact-alt svg{ width:14px; height:14px; }
+
+  footer{
+    padding:30px 0 50px;
+    font-size:.78rem;
+    color:var(--moss-deep);
+    display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:10px;
+  }
+  footer a{ color:var(--moss-deep); }
+
+  @media (max-width: 620px){
+    .about-grid{ grid-template-columns:1fr; }
+    .portrait{ width:120px; height:120px; }
+    .stat-list li{ grid-template-columns:90px 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+  }
